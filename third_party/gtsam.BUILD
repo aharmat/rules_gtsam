@@ -28,6 +28,7 @@ cc_library(
         [
             "gtsam/3rdparty/CCOLAMD/Source/ccolamd.c",
             "gtsam/3rdparty/SuiteSparse_config/SuiteSparse_config.c",
+            # Nothing uses this, and it has a transitive dependency on CppUnitLite, so let's ignore it
             # "gtsam/precompiled_header.cpp",
             "gtsam/base/**/*.cpp",
             "gtsam/basis/**/*.cpp",
@@ -50,6 +51,7 @@ cc_library(
             "gtsam/3rdparty/SuiteSparse_config/SuiteSparse_config.h",
             "gtsam/3rdparty/Spectra/**/*.h",
             "gtsam/global_includes.h",
+            # Nothing uses this, and it has a transitive dependency on CppUnitLite, so let's ignore it
             # "gtsam/precompiled_header.h",
             "gtsam/base/**/*.h",
             "gtsam/basis/*.h",
