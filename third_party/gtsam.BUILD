@@ -83,6 +83,7 @@ cc_library(
         "@//:gtsam_config",
         "@//:gtsam_dllexport",
         "@boost//:concept",
+        "@boost//:filesystem",
         "@boost//:format",
         "@boost//:math",
         "@boost//:pool",
@@ -118,7 +119,10 @@ cc_library(
             "gtsam_unstable/nonlinear/**/*.cpp",
             "gtsam_unstable/slam/**/*.cpp",
         ],
-        exclude = ["gtsam_unstable/slam/serialization.cpp"] + GTSAM_UNSTABLE_TEST_FILES,
+        exclude = [
+            "gtsam_unstable/slam/serialization.cpp",
+            "gtsam_unstable/discrete/examples/**/*.cpp"
+        ] + GTSAM_UNSTABLE_TEST_FILES,
     ),
     hdrs = glob(
         [
