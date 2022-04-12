@@ -1,6 +1,6 @@
 # rules_gtsam
 
-Rules for building [GTSAM](https://github.com/borglab/gtsam) with bazel.
+Rules for building [GTSAM](https://github.com/borglab/gtsam) with bazel. Heavily inspired by [rules_pcl](https://github.com/kgreenek/rules_pcl).
 
 
 ## How to use
