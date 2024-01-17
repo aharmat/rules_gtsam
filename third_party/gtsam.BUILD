@@ -103,6 +103,7 @@ GTSAM_UNSTABLE_TEST_FILES = [
     "gtsam_unstable/geometry/tests/**",
     "gtsam_unstable/linear/tests/**",
     "gtsam_unstable/nonlinear/tests/**",
+    "gtsam_unstable/partition/tests/**",
     "gtsam_unstable/slam/tests/**",
 ]
 
