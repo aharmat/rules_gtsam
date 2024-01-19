@@ -12,9 +12,9 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "rules_gtsam",
-    url = "https://github.com/aharmat/rules_gtsam/archive/main.tar.gz",
-    sha256 = "1cf2f543d11c8d4fea77252299fbaf8297f35b454b2b502112be0ab193b39948",
-    strip_prefix = "rules_gtsam-main",
+    url = "https://github.com/aharmat/rules_gtsam/archive/gtsam4.3.0pre-v0.tar.gz",
+    sha256 = "[TODO SHA for release]",  # TODO(kgk): Update this as a follow-up commit after merging and tagging.
+    strip_prefix = "gtsam4.3.0pre-v0",
 )
 
 load("@rules_gtsam//bzl:repositories.bzl", "gtsam_repositories")
@@ -36,13 +36,19 @@ gtsam_dllexport(library_name="gtsam")
 gtsam_dllexport(library_name="gtsam_unstable")
 ```
 
+C++17 is required. Add the following line to your .bazelrc file:
+
+```
+build --cxxopt='-std=c++17'
+```
+
 To define a target that depends on GTSAM:
 
 ```
 cc_binary(
     name = "example",
     srcs = ["main.cc"],
-    deps = ["@gtsam//:gtsam"],
+    deps = ["@gtsam"],
 )
 
 cc_binary(
@@ -58,3 +64,9 @@ Current limitations:
 * `GeographicLib` is not supported, so anything that depends on it will fail to compile
 * Tests are not built
 * All files that depend on `CppUnitLite` are excluded
+
+IMPORTANT:
+
+The version of gtsam used is the latest on the development branch as of June 20, 2023. This version is a Pre-4.3 release which has some major breaking changes since 4.1. In particular, boost::shared_ptr was replaced with std::shared_ptr throughout the codebase and stdc++17 is required to compile.
+
+If you need gtsam version 4.1.1, use the following rules_gtsam release: `gtsam4.1.1-v0`.
